@@ -1,4 +1,7 @@
 # onay_stat
+[<img alt="crates.io" src="https://img.shields.io/badge/crates.io-v0.1.0-orange">](https://crates.io/crates/onay_stat/0.1.0)
+<a href="https://actions-badge.atrox.dev/djakish/onay_stat/goto?ref=main"><img alt="Build Status" src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fdjakish%2Fonay_stat%2Fbadge%3Fref%3Dmain&style=flat" /></a>
+
 Simple crate for calculating sum, mean, median, median but sorted, range, variance, standard deviation, mode, max and min value and their indices.  
 ## Example
 Import in Cargo.toml file
