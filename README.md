@@ -10,7 +10,7 @@ onay_stat="0.1.0"
 ```
 Import and initialize from a f64 vector.
 ```rust
-use onay_stat;
+use onay_stat::*;
 fn main(){
     let mut calc = Calc::new(vec![
             0.4814386506837457,
