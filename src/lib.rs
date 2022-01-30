@@ -240,6 +240,64 @@ impl Calc {
         calc.middle_index = calc.len / 2;
         Some(calc)
     }
+
+    /// Make a new Calc strcut from f32
+    pub fn new_f32(data: Vec<f32>) -> Option<Calc> {
+        if data.is_empty() {
+            return None;
+        }
+        let converted = data.iter().map(|n| *n as f64).collect();
+        Calc::new(converted)
+    }
+
+    /// Make a new Calc strcut from i8
+    pub fn new_i8(data: Vec<i8>) -> Option<Calc> {
+        if data.is_empty() {
+            return None;
+        }
+        let converted = data.iter().map(|n| *n as f64).collect();
+        Calc::new(converted)
+    }
+
+    pub fn new_i16(data: Vec<i16>) -> Option<Calc> {
+        if data.is_empty() {
+            return None;
+        }
+        let converted = data.iter().map(|n| *n as f64).collect();
+        Calc::new(converted)
+    }
+
+    pub fn new_i32(data: Vec<i32>) -> Option<Calc> {
+        if data.is_empty() {
+            return None;
+        }
+        let converted = data.iter().map(|n| *n as f64).collect();
+        Calc::new(converted)
+    }
+
+    pub fn new_u8(data: Vec<u8>) -> Option<Calc> {
+        if data.is_empty() {
+            return None;
+        }
+        let converted = data.iter().map(|n| *n as f64).collect();
+        Calc::new(converted)
+    }
+
+    pub fn new_u16(data: Vec<u16>) -> Option<Calc> {
+        if data.is_empty() {
+            return None;
+        }
+        let converted = data.iter().map(|n| *n as f64).collect();
+        Calc::new(converted)
+    }
+
+    pub fn new_u32(data: Vec<u32>) -> Option<Calc> {
+        if data.is_empty() {
+            return None;
+        }
+        let converted = data.iter().map(|n| *n as f64).collect();
+        Calc::new(converted)
+    }
 }
 
 #[cfg(test)]
@@ -257,7 +315,13 @@ mod tests {
             0.2041683180134608,
         ])
         .unwrap();
-        assert!(approx_eq!(f64, calc.mean(), 0.24905562997351_f64, epsilon = 0.00000003, ulps = 2));
+        assert!(approx_eq!(
+            f64,
+            calc.mean(),
+            0.24905562997351_f64,
+            epsilon = 0.00000003,
+            ulps = 2
+        ));
     }
 
     #[test]
@@ -270,7 +334,13 @@ mod tests {
             0.2041683180134608,
         ])
         .unwrap();
-        assert!(approx_eq!(f64, calc.median(), 0.2382140377175458_f64, epsilon = 0.00000003, ulps = 2));
+        assert!(approx_eq!(
+            f64,
+            calc.median(),
+            0.2382140377175458_f64,
+            epsilon = 0.00000003,
+            ulps = 2
+        ));
     }
     #[test]
     fn test_sorted_median() {
@@ -282,7 +352,13 @@ mod tests {
             0.2041683180134608,
         ])
         .unwrap();
-        assert!(approx_eq!(f64, calc.sorted_median(), 0.2382140377175458_f64, epsilon = 0.00000003, ulps = 2));
+        assert!(approx_eq!(
+            f64,
+            calc.sorted_median(),
+            0.2382140377175458_f64,
+            epsilon = 0.00000003,
+            ulps = 2
+        ));
     }
     #[test]
     fn test_mode() {
@@ -294,7 +370,13 @@ mod tests {
             0.2041683180134608,
         ])
         .unwrap();
-        assert!(approx_eq!(f64, calc.mode(), 0.2041683180134608_f64, epsilon = 0.00000003, ulps = 2 ));
+        assert!(approx_eq!(
+            f64,
+            calc.mode(),
+            0.2041683180134608_f64,
+            epsilon = 0.00000003,
+            ulps = 2
+        ));
     }
     #[test]
     fn test_range() {
@@ -306,7 +388,13 @@ mod tests {
             0.2041683180134608,
         ])
         .unwrap();
-        assert!(approx_eq!(f64, calc.range(), 0.44750014793171_f64,epsilon = 0.00000003, ulps = 2));
+        assert!(approx_eq!(
+            f64,
+            calc.range(),
+            0.44750014793171_f64,
+            epsilon = 0.00000003,
+            ulps = 2
+        ));
     }
     #[test]
     fn test_variance() {
@@ -318,7 +406,13 @@ mod tests {
             0.2041683180134608,
         ])
         .unwrap();
-        assert!(approx_eq!(f64, calc.variance(), 0.020777812166056_f64, epsilon = 0.00000003, ulps = 2));
+        assert!(approx_eq!(
+            f64,
+            calc.variance(),
+            0.020777812166056_f64,
+            epsilon = 0.00000003,
+            ulps = 2
+        ));
     }
     #[test]
     fn test_standart_deviation() {
@@ -329,7 +423,25 @@ mod tests {
             0.2875186407007349,
             0.2041683180134608,
         ])
-        .unwrap();                           
-        assert!(approx_eq!(f64, calc.standart_deviation(), 0.14414510801985_f64,epsilon = 0.00000003, ulps = 2));
+        .unwrap();
+        assert!(approx_eq!(
+            f64,
+            calc.standart_deviation(),
+            0.14414510801985_f64,
+            epsilon = 0.00000003,
+            ulps = 2
+        ));
+    }
+
+    #[test]
+    fn test_different_type() {
+        let mut calc = Calc::new_i32(vec![4837457, 3302397, 2382458, 2870349, 2044608]).unwrap();
+        assert!(approx_eq!(
+            f64,
+            calc.standart_deviation(),
+            973693.24882273_f64,
+            epsilon = 0.00000003,
+            ulps = 2
+        ));
     }
 }
