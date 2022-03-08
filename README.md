@@ -6,7 +6,7 @@ Simple crate for calculating sum, mean, median, median but sorted, range, varian
 ## Example
 Import in Cargo.toml file
 ```rust
-onay_stat="0.1.2"
+onay_stat="0.1.3"
 ```
 Import and initialize from a f64 vector.
 ```rust

@@ -1,4 +1,5 @@
 use std::{collections::HashMap, usize};
+use rayon::prelude::*;
 
 #[derive(Default, Debug)]
 pub struct Calc {
@@ -38,7 +39,7 @@ struct Register {
 }
 impl Calc {
     pub fn length(&self) -> usize {
-        self.len
+        self.len.clone()
     }
 
     pub fn even(&self) -> bool {
@@ -47,7 +48,7 @@ impl Calc {
 
     pub fn total(&mut self) -> f64 {
         if !self.calc_total {
-            self.register.total = self.data.iter().sum();
+            self.register.total = self.data.par_iter().sum();
             self.calc_total = true;
         }
         self.register.total
@@ -198,7 +199,7 @@ impl Calc {
         self.mode();
     }
 
-    pub fn display(self) {
+    pub fn display(&self) {
         println!("Data {:?}", self.data);
         println!("Count {}", self.len);
         println!("Total {}", self.register.total);
@@ -246,7 +247,7 @@ impl Calc {
         if data.is_empty() {
             return None;
         }
-        let converted = data.iter().map(|n| *n as f64).collect();
+        let converted = data.par_iter().map(|n| *n as f64).collect();
         Calc::new(converted)
     }
 
@@ -255,7 +256,7 @@ impl Calc {
         if data.is_empty() {
             return None;
         }
-        let converted = data.iter().map(|n| *n as f64).collect();
+        let converted = data.par_iter().map(|n| *n as f64).collect();
         Calc::new(converted)
     }
 
@@ -263,7 +264,7 @@ impl Calc {
         if data.is_empty() {
             return None;
         }
-        let converted = data.iter().map(|n| *n as f64).collect();
+        let converted = data.par_iter().map(|n| *n as f64).collect();
         Calc::new(converted)
     }
 
@@ -271,7 +272,7 @@ impl Calc {
         if data.is_empty() {
             return None;
         }
-        let converted = data.iter().map(|n| *n as f64).collect();
+        let converted = data.par_iter().map(|n| *n as f64).collect();
         Calc::new(converted)
     }
 
@@ -279,7 +280,7 @@ impl Calc {
         if data.is_empty() {
             return None;
         }
-        let converted = data.iter().map(|n| *n as f64).collect();
+        let converted = data.par_iter().map(|n| *n as f64).collect();
         Calc::new(converted)
     }
 
@@ -287,7 +288,7 @@ impl Calc {
         if data.is_empty() {
             return None;
         }
-        let converted = data.iter().map(|n| *n as f64).collect();
+        let converted = data.par_iter().map(|n| *n as f64).collect();
         Calc::new(converted)
     }
 
@@ -295,7 +296,7 @@ impl Calc {
         if data.is_empty() {
             return None;
         }
-        let converted = data.iter().map(|n| *n as f64).collect();
+        let converted = data.par_iter().map(|n| *n as f64).collect();
         Calc::new(converted)
     }
 }
