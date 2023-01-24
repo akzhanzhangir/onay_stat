@@ -1,6 +1,7 @@
 use std::{collections::HashMap, usize};
 use rayon::prelude::*;
 
+
 #[derive(Default, Debug)]
 pub struct Calc {
     data: Vec<f64>,
@@ -112,11 +113,7 @@ impl Calc {
     pub fn variance(&mut self) -> f64 {
         if !self.calc_variance {
             let mean = self.mean();
-            for i in self.data.iter() {
-                let temp = i - mean;
-                self.register.variance += temp * temp;
-            }
-            self.register.variance /= self.len as f64;
+            self.register.variance = self.data.par_iter().map(|n| (n - mean).powi(2)).sum::<f64>() / (self.data.len()) as f64;
             self.calc_variance = true;
         }
         self.register.variance
@@ -185,6 +182,8 @@ impl Calc {
                     *count
                 })
                 .unwrap();
+
+            self.calc_mode = true;
         }
         self.register.mode
     }
